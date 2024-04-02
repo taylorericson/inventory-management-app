@@ -93,15 +93,16 @@ const loginUser = asyncHandler(async (req, res) => {
   // Generate Token
   const token = generateToken(user._id);
 
-  // Send HTTP-only cookie
-  res.cookie("token", token, {
-    path: "/",
-    httpOnly: true,
-    expires: new Date(Date.now() + 1000 * 86400), // 1 day
-    sameSite: "none",
-    secure: true,
-  });
-
+  if (passwordIsCorrect) {
+    // Send HTTP-only cookie
+    res.cookie("token", token, {
+      path: "/",
+      httpOnly: true,
+      expires: new Date(Date.now() + 1000 * 86400), // 1 day
+      sameSite: "none",
+      secure: true,
+    });
+  }
   if (user && passwordIsCorrect) {
     const { _id, name, email, photo, phone, bio } = user;
     res.status(200).json({
@@ -237,6 +238,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
   // Create reset token
   let resetToken = crypto.randomBytes(32).toString("hex") + user._id;
+  console.log(resetToken);
 
   // Hash token before saving to DB
   const hashedToken = crypto
@@ -280,6 +282,38 @@ const forgotPassword = asyncHandler(async (req, res) => {
   }
 });
 
+// Reset Password
+const resetPassword = asyncHandler(async (req, res) => {
+  const { password } = req.body;
+  const { resetToken } = req.params;
+
+  // Hash token, then compare to token in DB
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  // Find token in DB
+  const userToken = await Token.findOne({
+    token: hashedToken,
+    expiresAt: { $gt: Date.now() },
+  });
+
+  if (!userToken) {
+    res.send(400);
+    throw new Error("Invalid or expired token");
+  }
+
+  // Find user
+  const user = await User.findOne({ _id: userToken.userId });
+
+  user.password = password;
+  await user.save();
+  res
+    .status(200)
+    .json({ message: "Password reset successfully. Please log in." });
+});
+
 module.exports = {
   registerUser,
   loginUser,
@@ -289,4 +323,5 @@ module.exports = {
   updateUser,
   changePassword,
   forgotPassword,
+  resetPassword,
 };
