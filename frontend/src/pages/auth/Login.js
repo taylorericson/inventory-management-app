@@ -16,7 +16,7 @@ const Login = () => {
 
           <form>
             <input
-              type="text"
+              type="email"
               placeholder="Email Address"
               required
               name="email"
