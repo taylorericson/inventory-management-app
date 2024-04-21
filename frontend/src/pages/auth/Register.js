@@ -5,7 +5,7 @@ import Card from "../../components/card/Card";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import registerUser, { validateEmail } from "../../services/authService";
+import { registerUser, validateEmail } from "../../services/authService";
 import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
 import Loader from "../../components/loader/Loader";
 
@@ -106,14 +106,14 @@ const Register = () => {
               onChange={handleInputChange}
             />
             <button type="submit" className="--btn --btn-primary --btn-block">
-              Login
+              Register
             </button>
           </form>
 
           <span className={styles.register}>
             <Link to="/">Home</Link>
             <p>&nbsp; Already have an account?' &nbsp;</p>
-            <Link to="/login">Register</Link>
+            <Link to="/login">Login</Link>
           </span>
         </div>
       </Card>
