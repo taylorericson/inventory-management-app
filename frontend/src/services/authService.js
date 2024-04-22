@@ -43,6 +43,20 @@ export const logoutUser = async () => {
   }
 };
 
+// Get Login Status
+export const getLoginStatus = async (userData, resetToken) => {
+  try {
+    const response = await axios.get(`${BACKEND_URL}/api/users/loginstatus`);
+    return response.data;
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    toast.error(message);
+  }
+};
+
 // Forgot Password
 export const forgotPassword = async (userData) => {
   try {
