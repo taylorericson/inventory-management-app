@@ -6,6 +6,7 @@ import {
   createProduct,
   selectIsLoading,
 } from "../../redux/features/product/productSlice";
+import Loader from "../../components/loader/Loader";
 
 const initialState = {
   name: "",
@@ -51,10 +52,8 @@ const AddProduct = () => {
     formData.append("category", category);
     formData.append("quantity", quantity);
     formData.append("price", price);
-    formData.append("quantity", quantity);
+    formData.append("description", description);
     formData.append("image", productImage);
-
-    console.log(...formData);
 
     await dispatch(createProduct(formData));
 
@@ -63,6 +62,7 @@ const AddProduct = () => {
 
   return (
     <div>
+      {isLoading && <Loader />}
       <h3 className="--mt">Add New Product</h3>
       <ProductForm
         product={product}
