@@ -60,6 +60,23 @@ export const forgotPassword = async (userData) => {
   }
 };
 
+// Reset Password
+export const resetPassword = async (userData, resetToken) => {
+  try {
+    const response = await axios.put(
+      `${BACKEND_URL}/api/users/resetPassword/${resetToken}`,
+      userData
+    );
+    return response.data;
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    toast.error(message);
+  }
+};
+
 // Register User
 export const registerUser = async (userData) => {
   try {
