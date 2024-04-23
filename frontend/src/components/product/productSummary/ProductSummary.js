@@ -10,6 +10,8 @@ import {
   selectTotalStoreValue,
   selectOutOfStock,
   CALC_OUT_OF_STOCK,
+  CALC_CATEGORY,
+  selectCategory,
 } from "../../../redux/features/product/productSlice";
 
 // Icons
@@ -27,10 +29,12 @@ const ProductSummary = ({ products }) => {
   const dispatch = useDispatch();
   const totalStoreValue = useSelector(selectTotalStoreValue);
   const outOfStock = useSelector(selectOutOfStock);
+  const category = useSelector(selectCategory);
 
   useEffect(() => {
     dispatch(CALC_STORE_VALUE(products));
     dispatch(CALC_OUT_OF_STOCK(products));
+    dispatch(CALC_CATEGORY(products));
   }, [dispatch, products]);
 
   return (
@@ -58,7 +62,7 @@ const ProductSummary = ({ products }) => {
         <InfoBox
           icon={categoryIcon}
           title={"All Categories"}
-          count={0}
+          count={category.length}
           bgColor="card4"
         />
       </div>
