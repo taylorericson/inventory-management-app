@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   CALC_STORE_VALUE,
   selectTotalStoreValue,
+  selectOutOfStock,
+  CALC_OUT_OF_STOCK,
 } from "../../../redux/features/product/productSlice";
 
 // Icons
@@ -24,9 +26,11 @@ export const formatNumbers = (x) => {
 const ProductSummary = ({ products }) => {
   const dispatch = useDispatch();
   const totalStoreValue = useSelector(selectTotalStoreValue);
+  const outOfStock = useSelector(selectOutOfStock);
 
   useEffect(() => {
     dispatch(CALC_STORE_VALUE(products));
+    dispatch(CALC_OUT_OF_STOCK(products));
   }, [dispatch, products]);
 
   return (
@@ -48,7 +52,7 @@ const ProductSummary = ({ products }) => {
         <InfoBox
           icon={outOfStockIcon}
           title={"Out of Stock"}
-          count={0}
+          count={outOfStock}
           bgColor="card3"
         />
         <InfoBox
