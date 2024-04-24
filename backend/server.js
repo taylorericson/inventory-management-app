@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ["https://inventory-management-app-xi-nine.vercel.app"],
+    origin: "https://inventory-management-app-xi-nine.vercel.app",
     credentials: true,
   })
 );
