@@ -30,28 +30,28 @@ These instructions will get you a copy of the project up and running on your loc
 
 What you need to install the software:
 
-\`\`\`bash
+```bash
 node.js
 npm
 MongoDB
-\`\`\`
+```
 
 ### Installing
 
 Steps to get your development environment running:
 
 1. Clone the repo:
-   \`\`\`bash
+   ```
    git clone https://github.com/taylorericson/inventory-management-app.git
-   \`\`\`
+   ```
 2. Install NPM packages:
-   \`\`\`bash
+   ```
    npm install
-   \`\`\`
+   ```
 3. Start the application:
-   \`\`\`bash
+   ```
    npm start
-   \`\`\`
+   ```
 
    This runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
