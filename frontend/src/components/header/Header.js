@@ -16,7 +16,6 @@ const Header = () => {
   };
   return (
     <div className="--pad header">
-      Header
       <div className="--flex-between">
         <h3>
           <span className="--fw-thin">Welcome, </span>
