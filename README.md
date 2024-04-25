@@ -20,6 +20,7 @@ This Inventory Management Application is a Full-Stack web application built usin
 - **Redux:** Used for managing application state across all components.
 - **Nodemailer:** Module for sending emails from Node.js.
 - **Cloudinary:** Used for storing photos in the cloud.
+- **Postman:** For testing API endpoints.
 - **Vercel:** For frontend deployment.
 - **Render:** For backend deployment.
 
