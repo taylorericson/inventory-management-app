@@ -1,15 +1,15 @@
 # Inventory Management Application
 
-This Inventory Management Application is a full-featured web application built using the MERN stack (MongoDB, Express.js, React, and Node.js), enhanced with Redux for efficient state management. It is designed to help users manage their inventory by tracking products, stock, and value. This app features user authentication, and product management capabilities within a secure and responsive web interface.
+This Inventory Management Application is a Full-Stack web application built using the MERN stack (MongoDB, Express.js, React, and Node.js), enhanced with Redux for efficient state management. It is designed to help users manage their inventory by tracking products, stock, and value. This app features user authentication, and product management capabilities within a secure and responsive web interface.
 
 ## Features
 
 - **User Authentication:** Secure login and registration system to manage individual user sessions.
 - **Product Management:** Add, view, update, and delete products in the inventory.
-- **Redux State Management:** Centralized application state management with Redux, enhancing performance and maintainability.
-- **Responsive Design:** Fully responsive web interface, compatible with mobile and desktop devices.
+- **Redux State Management:** Centralized application state management with Redux.
+- **Responsive Design:** Responsive web interface.
 - **Email Integration:** Uses Nodemailer to send emails directly from the application.
-- **Security:** Implemented security practices to protect user data and prevent unauthorized access.
+- **Security:** Security practices in place to protect user data and prevent unauthorized access.
 
 ## Technologies Used
 
@@ -19,6 +19,7 @@ This Inventory Management Application is a full-featured web application built u
 - **Node.js:** Runtime environment to help run JavaScript on the server.
 - **Redux:** Used for managing application state across all components.
 - **Nodemailer:** Module for sending emails from Node.js.
+- **Cloudinary:** Used for storing photos in the cloud.
 - **Vercel:** For frontend deployment.
 - **Render:** For backend deployment.
 
